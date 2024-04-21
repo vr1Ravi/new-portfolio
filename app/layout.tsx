@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} mx-auto mb-40 mt-4 max-w-2xl antialiased`}
+        className={`${inter.className} mx-auto  mt-4 max-w-2xl antialiased`}
       >
         <Header />
         {children}
