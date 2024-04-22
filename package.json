@@ -10,6 +10,9 @@
     "lint": "next lint",
     "lint:fix": "eslint --fix ."
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@prisma/client": "^5.12.1",
     "next": "14.2.2",
