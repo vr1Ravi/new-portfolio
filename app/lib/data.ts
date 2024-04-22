@@ -1,4 +1,4 @@
-import db from '@/db/index';
+import { prisma as db } from '@/db/index';
 import { projectType } from '@/types/types';
 
 const Project = db.project;
