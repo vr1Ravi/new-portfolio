@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="flex flex-col p-3">
       <div className="mx-auto mt-12 h-44 w-44 overflow-hidden rounded-full border-4 border-neutral-700 bg-black">
-        <Image src="/profile.jpg" alt="profile-img" width={200} height={270} />
+        <Image src="/profile.JPG" alt="profile-img" width={200} height={270} />
       </div>
       <div className="mt-6 ">
         <Heading text={`hey, I'm Ravi`} icon="👋" />
