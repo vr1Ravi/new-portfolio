@@ -6,7 +6,7 @@ const Project = db.project;
 export async function getProjects() {
   try {
     const projects = await Project.findMany();
-    await db.$disconnect();
+    db.$disconnect();
     return projects;
   } catch (error) {
     await db.$disconnect();
@@ -27,7 +27,7 @@ export async function addProject(newProject: projectType) {
         href,
       },
     });
-    await db.$disconnect();
+    db.$disconnect();
   } catch (error) {
     await db.$disconnect();
     throw new Error('New project addition failed, server error');

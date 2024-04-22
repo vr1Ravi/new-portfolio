@@ -12,19 +12,19 @@ export default function Home() {
       </div>
       <div className="mt-6 ">
         <Heading text={`hey, I'm Ravi`} icon="👋" />
-        <p className="mt-3 text-neutral-700">
+        <p className="mt-3 text-neutral-700 dark:text-neutral-500">
           I am a final-year MCA student with a passion for web development. My
           primary focus is on{' '}
-          <span className=" font-medium text-black underline decoration-neutral-800">
+          <span className=" font-medium text-black underline decoration-neutral-800 dark:text-white dark:decoration-white">
             JavaScript
           </span>
           , and I thoroughly enjoy creating projects using the{' '}
-          <span className=" font-medium text-black underline decoration-neutral-800">
+          <span className=" font-medium text-black underline decoration-neutral-800 dark:text-white dark:decoration-white">
             MERN
           </span>{' '}
           stack. I currently reside in Ghaziabad. Outside of coding, I have a
           love for traveling and exploring new places. I believe in continuous{' '}
-          <span className=" font-medium text-black underline decoration-neutral-800">
+          <span className=" font-medium text-black underline decoration-neutral-800 dark:text-white dark:decoration-white">
             learning
           </span>{' '}
           and am always eager to take on new challenges in the world of

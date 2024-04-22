@@ -10,13 +10,12 @@ export default function Project({
   image,
   techStack,
   href,
-  id = 0,
 }: projectType) {
   return (
     <a
       href={href}
       target="_blank"
-      className={`relative mx-auto mt-6 flex w-[80%] flex-col  items-center rounded  bg-gray-100`}
+      className={`relative mx-auto mt-6 flex w-[80%] flex-col  items-center rounded bg-gray-100  dark:bg-neutral-950`}
     >
       <div className="px-2 pt-2">
         <Image
@@ -30,7 +29,7 @@ export default function Project({
       </div>
       <div className="mt-3 flex flex-col gap-1 px-4">
         <Heading text={title} icon={icon} />
-        <p>{description}</p>
+        <p className="text-neutral-700  dark:text-neutral-500">{description}</p>
       </div>
       <div className="flex w-full flex-wrap justify-start gap-2 p-4">
         {techStack.map((stack) => (

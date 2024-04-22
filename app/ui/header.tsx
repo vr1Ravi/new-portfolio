@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MdOutlineLightMode, MdOutlineDarkMode } from '@/app/ui/icons';
-import { useState } from 'react';
+import { useTheme } from 'next-themes';
 
 // Nav Links
 const links = [
@@ -21,13 +21,17 @@ const links = [
 ];
 export default function Header() {
   const pathname = usePathname();
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const { setTheme, resolvedTheme } = useTheme();
+
+  const handleTheme = () => {
+    resolvedTheme === 'dark' ? setTheme('light') : setTheme('dark');
+  };
   return (
     <header className="flex w-full p-2">
       <nav className="mr-auto flex gap-4">
         {links.map((link) => (
           <Link
-            className={`${pathname === link.href && 'text-gray-500'}`}
+            className={`${pathname === link.href ? 'text-black dark:text-white' : 'text-gray-500'}`}
             key={link.name}
             href={link.href}
           >
@@ -36,16 +40,16 @@ export default function Header() {
         ))}
       </nav>
       <button
-        className={`peer h-6 w-11 rounded-full bg-gray-200 ${isChecked && 'bg-gray-800'} px-[2px]`}
+        className={`peer h-6 w-11 rounded-full bg-gray-200 px-[2px] dark:bg-gray-800`}
         role="switch"
-        aria-checked={isChecked}
-        onClick={() => setIsChecked(!isChecked)}
+        aria-checked={resolvedTheme === 'dark'}
+        onClick={handleTheme}
       >
         <div
-          className={`peer h-4 w-[60%] transition-all  peer-focus:outline-none ${isChecked && 'translate-x-full'}  dark:border-gray-600 dark:bg-gray-700`}
+          className={`peer h-4 w-[60%]  transition-all  peer-focus:outline-none dark:translate-x-full`}
         >
-          {isChecked ? (
-            <MdOutlineDarkMode className="rounded-full  bg-black text-white" />
+          {resolvedTheme === 'dark' ? (
+            <MdOutlineDarkMode className="rounded-full bg-black" />
           ) : (
             <MdOutlineLightMode className="rounded-full bg-white" />
           )}
