@@ -6,6 +6,7 @@ const Project = db.project;
 export async function getProjects() {
   try {
     const projects = await Project.findMany();
+    db.$disconnect();
     return projects;
   } catch (error) {
     await db.$disconnect();
