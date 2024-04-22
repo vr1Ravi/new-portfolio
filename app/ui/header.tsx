@@ -49,9 +49,9 @@ export default function Header() {
           className={`peer h-4 w-[60%]  transition-all  peer-focus:outline-none dark:translate-x-full`}
         >
           {resolvedTheme === 'dark' ? (
-            <MdOutlineDarkMode className="rounded-full bg-black" />
+            <MdOutlineDarkMode className="rounded-full p-[1px] dark:bg-black" />
           ) : (
-            <MdOutlineLightMode className="rounded-full bg-white" />
+            <MdOutlineLightMode className="rounded-full  bg-white p-[1px]" />
           )}
         </div>
       </button>
