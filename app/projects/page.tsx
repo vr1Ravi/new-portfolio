@@ -6,7 +6,7 @@ import { projectType } from '@/types/types';
 import Project from '../ui/projects/project';
 export default async function Projects() {
   // await addProject(newProject);
-  const projects: projectType[] = (await getProjects()).reverse();
+  const projects: projectType[] = await getProjects();
 
   return (
     <main className="mt-12 flex w-full flex-col justify-between p-3">
@@ -15,8 +15,8 @@ export default async function Projects() {
       {projects.map((project) => (
         <Project
           id={project.id}
-          href={project.href}
           key={project.id}
+          href={project.href}
           title={project.title}
           description={project.description}
           icon={project.icon}

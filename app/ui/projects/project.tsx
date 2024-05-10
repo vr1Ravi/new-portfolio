@@ -24,7 +24,6 @@ export default function Project({
           height={200}
           width={400}
           className="h-auto w-auto"
-          priority={true}
         />
       </div>
       <div className="mt-3 flex flex-col gap-1 px-4">

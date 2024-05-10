@@ -1,14 +1,21 @@
 import Image from 'next/image';
+import ProfileImg from '../public/profile.png';
 import { BsGithub, BsTwitterX, BsLinkedin } from '@/app/ui/icons';
 import Heading from './ui/heading';
-import SocialLink from './ui/Home/social-links';
+import SocialLink from './ui/home/social-links';
 import { skills } from './lib/seed';
 import Skill from './ui/skill';
 export default function Home() {
   return (
     <main className="flex flex-col p-3">
-      <div className="mx-auto mt-12 h-44 w-44 overflow-hidden rounded-full border-4 border-neutral-700 bg-black">
-        <Image src="/profile.JPG" alt="profile-img" width={200} height={270} />
+      <div className="relative mx-auto mt-12 h-44 w-44  overflow-hidden rounded-full border-4 border-neutral-700 ">
+        <Image
+          src={ProfileImg}
+          alt="profile-img"
+          width={200}
+          height={270}
+          placeholder="blur"
+        />
       </div>
       <div className="mt-6 ">
         <Heading text={`hey, I'm Ravi`} icon="👋" />
