@@ -2,7 +2,7 @@ import Image from 'next/image';
 import ProfileImg from '../public/profile.png';
 import { BsGithub, BsTwitterX, BsLinkedin } from '@/app/ui/icons';
 import Heading from './ui/heading';
-import SocialLink from './ui/home/social-links';
+import SocialLink from './ui/Home/social-links';
 import { skills } from './lib/seed';
 import Skill from './ui/skill';
 export default function Home() {
