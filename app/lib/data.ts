@@ -10,6 +10,8 @@ export async function getProjects() {
     return projects;
   } catch (error) {
     await db.$disconnect();
+    console.log('error--->', error);
+
     throw new Error('Failed to fetch projects, server error');
   }
 }
