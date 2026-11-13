@@ -2,13 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f1f1f4;
+  --line: rgba(20, 20, 40, 0.1);
+  --fg: #14141c;
+  --muted: #5d5d6e;
+  --accent: #4f46e5;
+  --accent-fg: #ffffff;
+  --accent-soft: rgba(79, 70, 229, 0.1);
+  --ok: #16a34a;
+  --glow: rgba(79, 70, 229, 0.16);
+  --grid: rgba(20, 20, 40, 0.05);
+}
+
+.dark {
+  --bg: #0b0b10;
+  --surface: #13131a;
+  --surface-2: #1b1b25;
+  --line: rgba(255, 255, 255, 0.09);
+  --fg: #f2f2f7;
+  --muted: #9a9aae;
+  --accent: #8b87ff;
+  --accent-fg: #0b0b10;
+  --accent-soft: rgba(139, 135, 255, 0.14);
+  --ok: #4ade80;
+  --glow: rgba(139, 135, 255, 0.2);
+  --grid: rgba(255, 255, 255, 0.045);
+  color-scheme: dark;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  background-image: radial-gradient(
+      ellipse 60% 40% at 50% -5%,
+      var(--glow),
+      transparent 70%
+    ),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:
+    auto,
+    44px 44px,
+    44px 44px;
+  background-repeat: no-repeat, repeat, repeat;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
   }
 }

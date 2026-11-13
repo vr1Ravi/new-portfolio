@@ -2,10 +2,10 @@ import { IconType } from 'react-icons';
 
 export interface headingType {
   text: string;
-  icon: string;
 }
 export interface socialLinksType {
   href: string;
+  label: string;
   Icon: IconType;
 }
 export interface skillType {

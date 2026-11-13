@@ -122,7 +122,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/ravi/Ravi/new-portfolio/db/prisma/generated/client",
+      "value": "/Users/ravi/ravi/new-portfolio/db/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -131,7 +131,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "darwin-arm64",
         "native": true
       }
     ],

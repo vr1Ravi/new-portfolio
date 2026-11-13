@@ -1,57 +1,96 @@
 import Image from 'next/image';
 import ProfileImg from '../public/profile.png';
-import { BsGithub, BsTwitterX, BsLinkedin } from '@/app/ui/icons';
 import Heading from './ui/heading';
-import SocialLink from './ui/Home/social-links';
-import { skills } from './lib/seed';
+import CopyEmail from './ui/Home/copy-email';
 import Skill from './ui/skill';
+import { skillGroups } from './lib/seed';
+import { CONTACT_EMAIL } from './lib/site';
+
+const card =
+  'min-w-0 rounded-[20px] border border-line bg-surface p-5 transition-colors hover:border-accent/50';
+
 export default function Home() {
   return (
-    <main className="flex flex-col p-3">
-      <div className="relative mx-auto mt-12 h-44 w-44  overflow-hidden rounded-full border-4 border-neutral-700 ">
-        <Image
-          src={ProfileImg}
-          alt="profile-img"
-          width={200}
-          height={270}
-          placeholder="blur"
-        />
-      </div>
-      <div className="mt-6 ">
-        <Heading text={`hey, I'm Ravi`} icon="👋" />
-        <p className="mt-3 text-neutral-700 dark:text-neutral-500">
-          I have 1 year of experience in full stack development with a strong
-          focus on{' '}
-          <span className=" font-medium text-black underline decoration-neutral-800 dark:text-white dark:decoration-white">
-            JavaScript
-          </span>
-          , particularly in creating projects using the{' '}
-          <span className=" font-medium text-black underline decoration-neutral-800 dark:text-white dark:decoration-white">
-            MERN
-          </span>{' '}
-          stack. I am passionate about web development and constantly seek to
-          expand my knowledge and take on new challenges. Outside of work, I
-          enjoy traveling and exploring new places, always striving for
-          continuous growth in both personal and professional aspects.
-        </p>
-      </div>
-      {/* Images Later */}
-      <div className="mt-2 flex gap-3">
-        <SocialLink href="https://github.com/vr1Ravi" Icon={BsGithub} />
-        <SocialLink href="https://twitter.com/Vr1xR" Icon={BsTwitterX} />
-        <SocialLink
-          href="https://www.linkedin.com/in/ravishankar-jha-408679216/"
-          Icon={BsLinkedin}
-        />
-      </div>
-      <div className="mt-8">
-        <Heading text="techstack I know" icon="🧑‍💻" />
-        <div className="mt-4 flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <Skill key={skill.title} title={skill.title} Icon={skill.Icon} />
-          ))}
+    <main>
+      {/* Hero */}
+      <header className="grid items-center gap-10 pb-14 pt-12 sm:grid-cols-[1fr_auto] sm:pt-[72px]">
+        <div>
+          <p className="max-w-[52ch] text-[1.05rem] text-muted">
+            Hi, I&apos;m Ravi.
+            <br />
+            I&apos;m a{' '}
+            <strong className="font-semibold text-fg">
+              product engineer
+            </strong>{' '}
+            focused on building clean user interfaces, resilient backend
+            systems, and thoughtful user experiences. I care about{' '}
+            <strong className="font-semibold text-fg">
+              solving real problems
+            </strong>
+            , shipping
+            <strong className="font-semibold text-fg"> reliable code</strong>,
+            and exploring new places when I&apos;m offline.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-2.5">
+            <a
+              href="/projects"
+              className="rounded-xl bg-accent px-5 py-2.5 text-[15px] font-medium text-accent-fg transition hover:-translate-y-0.5"
+            >
+              View projects →
+            </a>
+            <a
+              href="#contact"
+              className="rounded-xl border border-line bg-surface px-5 py-2.5 text-[15px] font-medium transition hover:-translate-y-0.5 hover:border-accent"
+            >
+              Get in touch
+            </a>
+          </div>
         </div>
-      </div>
+        <div className="order-first h-28 w-28 overflow-hidden rounded-full border border-line sm:order-none sm:h-[188px] sm:w-[188px]">
+          <Image
+            src={ProfileImg}
+            alt="Ravi"
+            placeholder="blur"
+            className="h-full w-full scale-[1.04] object-cover"
+            priority
+          />
+        </div>
+      </header>
+
+      {/* Tech stack */}
+      <section className="py-7">
+        <Heading text="Tech stack" />
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-6">
+          <div className={`${card} sm:col-span-6`}>
+            {skillGroups.map((group) => (
+              <div key={group.name} className="mt-3.5 first-of-type:mt-0">
+                <div className="text-xs text-muted">{group.name}</div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {group.items.map((s) => (
+                    <Skill key={s.title} title={s.title} Icon={s.Icon} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-7">
+        <div className="flex flex-wrap items-center justify-between gap-5 rounded-3xl border border-line bg-gradient-to-br from-accent-soft to-surface p-8">
+          <div>
+            <h2 className="text-balance font-display text-[clamp(1.5rem,3.5vw,2.1rem)] font-bold leading-tight tracking-tight">
+              Have a role or project in mind?
+            </h2>
+            <span className="block text-muted">
+              Got an idea, a product, or a problem worth solving? Let&apos;s
+              talk.
+            </span>
+          </div>
+          <CopyEmail email={CONTACT_EMAIL} />
+        </div>
+      </section>
     </main>
   );
 }

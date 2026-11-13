@@ -1,9 +1,7 @@
-import { headingType } from '@/types/types';
-export default function Heading({ text, icon }: headingType) {
+export default function Heading({ text }: { text: string }) {
   return (
-    <h1 className="text-xl font-semibold tracking-tighter">
+    <h2 className="mb-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
       {text}
-      <span className=" ml-1 text-3xl">{icon}</span>
-    </h1>
+    </h2>
   );
 }

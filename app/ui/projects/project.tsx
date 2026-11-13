@@ -1,11 +1,9 @@
 import { projectType } from '@/types/types';
-import Heading from '@/app/ui/heading';
 import Skill from '@/app/ui/skill';
 import Image from 'next/image';
 
 export default function Project({
   title,
-  icon,
   description,
   image,
   techStack,
@@ -15,27 +13,30 @@ export default function Project({
     <a
       href={href}
       target="_blank"
-      className={`relative mx-auto mt-6 flex w-[80%] flex-col  items-center rounded bg-gray-100  dark:bg-neutral-950`}
+      rel="noreferrer"
+      className="hover:border-accent/50 group flex flex-col overflow-hidden rounded-[20px] border border-line bg-surface transition duration-200 hover:-translate-y-1"
     >
-      <div className="px-2 pt-2">
-        <Image
-          src={image}
-          alt="project-img"
-          height={200}
-          width={400}
-          layout="intrinsic"
-          // className="h-auto w-auto"
-          // placeholder="blur"
-        />
-      </div>
-      <div className="mt-3 flex flex-col gap-1 px-4">
-        <Heading text={title} icon={icon} />
-        <p className="text-neutral-700  dark:text-neutral-500">{description}</p>
-      </div>
-      <div className="flex w-full flex-wrap justify-start gap-2 p-4">
-        {techStack.map((stack) => (
-          <Skill key={stack} title={stack} />
-        ))}
+      <Image
+        src={image}
+        alt={`${title} screenshot`}
+        width={800}
+        height={400}
+        className="h-44 w-full border-b border-line object-cover object-top"
+      />
+      <div className="flex flex-1 flex-col gap-2.5 p-5">
+        <h3 className="font-display text-lg font-semibold tracking-tight">
+          {title}
+        </h3>
+        <p className="text-[15px] text-muted">{description}</p>
+        <div className="flex flex-wrap gap-2">
+          {techStack.map((stack) => (
+            <Skill key={stack} title={stack} />
+          ))}
+        </div>
+        <span className="mt-auto pt-1 text-sm text-accent">
+          View live{' '}
+          <span className="transition group-hover:translate-x-0.5">↗</span>
+        </span>
       </div>
     </a>
   );

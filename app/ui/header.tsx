@@ -4,57 +4,56 @@ import { usePathname } from 'next/navigation';
 import { MdOutlineLightMode, MdOutlineDarkMode } from '@/app/ui/icons';
 import { useTheme } from 'next-themes';
 
-// Nav Links
 const links = [
-  {
-    name: 'home',
-    href: '/',
-  },
-  {
-    name: 'projects',
-    href: '/projects',
-  },
-  {
-    name: 'blog',
-    href: '/blog',
-  },
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Work', href: '/work' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Blog', href: '/blog' },
 ];
+
 export default function Header() {
   const pathname = usePathname();
   const { setTheme, resolvedTheme } = useTheme();
 
-  const handleTheme = () => {
-    resolvedTheme === 'dark' ? setTheme('light') : setTheme('dark');
-  };
   return (
-    <header className="flex w-full p-2">
-      <nav className="mr-auto flex gap-4">
-        {links.map((link) => (
-          <Link
-            className={`${pathname === link.href ? 'text-black dark:text-white' : 'text-gray-500'}`}
-            key={link.name}
-            href={link.href}
-          >
-            {link.name}
-          </Link>
-        ))}
-      </nav>
-      <button
-        className={`peer h-6 w-11 rounded-full bg-gray-200 px-[2px] dark:bg-gray-800`}
-        role="switch"
-        aria-checked={resolvedTheme === 'dark'}
-        onClick={handleTheme}
+    <div className="sticky top-0 z-10 pt-3">
+      <nav
+        aria-label="Main"
+        className="bg-surface/70 flex items-center gap-2 rounded-full border border-line py-2 pl-5 pr-2 backdrop-blur-md"
       >
-        <div
-          className={`peer h-4 w-[60%]  transition-all  peer-focus:outline-none dark:translate-x-full`}
+        <Link
+          href="/"
+          className="mr-auto font-display font-bold tracking-tight"
         >
-          {resolvedTheme === 'dark' ? (
-            <MdOutlineDarkMode className="rounded-full p-[1px] dark:bg-black" />
-          ) : (
-            <MdOutlineLightMode className="rounded-full  bg-white p-[1px]" />
-          )}
+          Ravi
+        </Link>
+        <div className="flex gap-0.5">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              aria-current={pathname === link.href ? 'page' : undefined}
+              className={`rounded-full px-3 py-1.5 text-sm transition-colors sm:px-4 ${
+                pathname === link.href
+                  ? 'bg-surface-2 text-fg'
+                  : 'text-muted hover:text-fg'
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
-      </button>
-    </header>
+        <button
+          type="button"
+          aria-label="Toggle theme"
+          onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface text-lg hover:bg-surface-2"
+        >
+          <MdOutlineDarkMode className="hidden dark:block" />
+          <MdOutlineLightMode className="dark:hidden" />
+        </button>
+      </nav>
+    </div>
   );
 }
